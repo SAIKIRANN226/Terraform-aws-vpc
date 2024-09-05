@@ -90,10 +90,8 @@ resource "aws_nat_gateway" "main" {
         Name = "${local.name}"
     }
   )
-
-  # To ensure proper ordering, it is recommended to add an explicit dependency
-  # on the Internet Gateway for the VPC.
-  depends_on = [aws_internet_gateway.gw]
+  
+  depends_on = [aws_internet_gateway.gw] # Nat gateway is only used when internet gateway should be in public route table,if you want to add dependency explicitly then use depends_on
 }
 
 resource "aws_route_table" "public" {
