@@ -90,8 +90,8 @@ resource "aws_nat_gateway" "main" {
         Name = "${local.name}"
     }
   )
-  
-  depends_on = [aws_internet_gateway.gw] # Nat gateway is only used when internet gateway should be in public route table,if you want to add dependency explicitly then use depends_on
+
+  depends_on = [aws_internet_gateway.gw] # Nat gateway is only used when internet gateway should be in public route table,if you want to add dependency explicitly then use depends_on. 99% terraform will takecare of dependencies but incase you can use command called "depends_on"
 }
 
 resource "aws_route_table" "public" {
