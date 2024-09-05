@@ -66,7 +66,7 @@ resource "aws_subnet" "database" {
   )
 }
 
-resource "aws_db_subnet_group" "default" {
+resource "aws_db_subnet_group" "default" {   # database subnet having different behaviour so we need to add database subnet group,simple grouping subnets which you have created for databas,aws has RDS
   name       = "${local.name}"
   subnet_ids = aws_subnet.database[*].id
 
